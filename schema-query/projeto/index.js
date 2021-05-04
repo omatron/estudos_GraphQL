@@ -22,6 +22,11 @@ scalar Date
 `
 
 const resolvers = {
+    Usuario: {
+        salario(usuario) {
+            return usuario.salario_real
+        }
+    },
     Query: {
         ola() {
             return 'String'
@@ -35,7 +40,7 @@ const resolvers = {
                 nome: "Admin",
                 email: 'admin@server.com',
                 idade: 20,
-                salario: 1234.56,
+                salario_real: 1234.56,
                 vip: true
             }
         }
