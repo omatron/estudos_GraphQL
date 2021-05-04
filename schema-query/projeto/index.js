@@ -12,16 +12,33 @@ scalar Date
         vip: Boolean
     }
 
+    type Produto {
+        nome: String!
+        preco: Float!
+        desconto: Float
+        precoComDesconto: Float
+    }
+
     # Pontos de entrada da sua API
     type Query {
         ola: String
         horaAtual: Date
         usuarioLogado: Usuario
+        produtoEmDestaque: Produto
 
     }
 `
 
 const resolvers = {
+    Produto: {
+        precoComDesconto(produto) { 
+            if(produto.desconto) {
+                return produto.preco * (1 - produto.desconto)
+            } else {
+                return produto.preco
+            }
+        }
+    },
     Usuario: {
         salario(usuario) {
             return usuario.salario_real
@@ -42,6 +59,14 @@ const resolvers = {
                 idade: 20,
                 salario_real: 1234.56,
                 vip: true
+            }
+        },
+        produtoEmDestaque() {
+            return {
+                nome: 'Note',
+                preco: 1.1,
+                desconto: 0.15
+
             }
         }
     }
