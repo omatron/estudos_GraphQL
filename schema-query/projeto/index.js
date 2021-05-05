@@ -100,9 +100,9 @@ const resolvers = {
         usuarios() {
             return usuarios
         },
-        usuario(_, args) {
+        usuario(_, { id }) {
             const sels = usuarios
-                .filter( u => u.id === args.id)
+                .filter( u => u.id === id)
             return sels ? sels[0] : null
         }
     }
