@@ -45,6 +45,7 @@ scalar Date
         usuarioLogado: Usuario
         produtoEmDestaque: Produto
         numerosMegaSena: [Int!]!
+        usuarios: [Usuario]
 
     }
 `
@@ -95,6 +96,9 @@ const resolvers = {
             return Array(6).fill(0)
                 .map(n => parseInt(Math.random() * 60 + 1))
                 .sort(crescente)
+        },
+        usuarios() {
+            return usuarios
         }
     }
 }
