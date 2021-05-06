@@ -1,0 +1,33 @@
+{
+    #horaAtual
+    #ola
+  # perfis {
+  # id nome
+  # }
+    
+  #   perfil(id: 2) {
+  #     id
+  #     nome
+  #   }
+  #   usuario(uid: 1){
+  #     nome
+  #     uid
+  #   }
+     
+  #   usuarios{
+  #     nome
+  #     perfil{
+  #       nome
+  #       id
+  #     }
+  #   }
+    
+  # }
+  
+  #fragment
+    usuarios{...usuarioCompleto}
+  }
+  fragment usuarioCompleto on Usuario {
+    uid nome email idade salario vip
+    perfil {nome id}
+  }
